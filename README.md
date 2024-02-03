@@ -20,6 +20,6 @@ A aplicação é responsável por consumir os serviços do projeto [LocateMyCarA
    ```bash
    git clone https://github.com/ElitonSantana/LocateMyCarWeb.git
    ```
-Abra o projeto no Visual Studio.
-Configure as variáveis de ambiente, chaves de API ou outras configurações necessárias.
-Compile e execute a aplicação.
+- Abra o projeto no Visual Studio.
+- Configure as variáveis de ambiente, chaves de API ou outras configurações necessárias.
+- Compile e execute a aplicação.
