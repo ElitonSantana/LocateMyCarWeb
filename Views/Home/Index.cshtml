@@ -1,0 +1,35 @@
+﻿@model LocateMyCarWeb.Models.MessageResponse<List<VehicleVM>>;
+@{
+    ViewData["Title"] = "Página Inicial";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="text-center">
+    <h1 style="color:white">BrasilKar</h1>
+    <h7 style="color:white">TOP 3 Mais antigos</h7>
+</div>
+@if (!Model.Success)
+{
+    <div class="alert alert-warning" role="alert" style="text-align:center; margin:10px 30%;">
+        Nenhum veiculo encontrado!
+    </div>
+}
+else
+{
+    <div class="container mt-5">
+        <div class="row">
+            @foreach (var vehicle in Model.Entity)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="@vehicle.ImageURL" class="card-img-top" alt="Veiculo">
+                        <div class="card-body">
+                            <h5 class="card-title">@vehicle.FullName</h5>
+                            <p class="card-text">Ano: @vehicle.Year</p>
+                            <p class="card-text">Preço: @vehicle.Price.ToString("C")</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}

@@ -1,0 +1,54 @@
+﻿@model List<LocateMyCarWeb.Models.VehicleDetail>;
+@{
+}
+
+@if (Model == null || !Model.Any())
+{
+    <div class="alert alert-warning" role="alert" style="text-align:center; margin:10px">
+        Nenhum veiculo encontrado!
+    </div>
+}
+else
+{
+    <div class="container mt-4">
+        <h2>Versões do veiculo</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Ano</th>
+                    <th>Potência</th>
+                    <th>Preço</th>
+                    <th>Qtd. de Portas</th>
+                    <th width="50px"></th>
+                    <th width ="50px"></th>
+                    <th width="50px"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var vehicle in Model)
+                {
+                    <tr>
+                        <td>@vehicle.VehicleDetailId</td>
+                        <td>@vehicle.Year</td>
+                        <td>@vehicle.VehiclePower</td>
+                        <td>@vehicle.Price.ToString("C")</td>
+                        <td>@vehicle.VehicleDoors</td>
+                        <td>
+                            <a href="@Url.Action("DetailsVehicleDetails", "Vehicle", new { VehicleDetailId = vehicle.VehicleDetailId, VehicleId = vehicle.VehicleId })" class="btn btn-info">Detalhes</a>
+                        </td>
+                        <td>
+                            <a href="@Url.Action("EditVehicleDetails", "Vehicle", new { VehicleDetailId = vehicle.VehicleDetailId, VehicleId = vehicle.VehicleId })" class="btn btn-warning">Editar</a>
+                        </td>
+                        <td>
+                            <a href="@Url.Action("DeleteVehicleDetails", "Vehicle", new { VehicleDetailId = vehicle.VehicleDetailId, VehicleId = vehicle.VehicleId })" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+
+<div class="clearfix">
